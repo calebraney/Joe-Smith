@@ -11,6 +11,7 @@ window.Webflow.push(() => {
     const allSlides = document.querySelectorAll('.cta-primary_item');
     const START_OPACITY = 0.3;
     const ACTIVE_OPACITY = 1;
+    if (!slideList || !primarySlides) return;
     let distance = 0;
     let currentSlide = 1;
     let tl = gsap.timeline({
