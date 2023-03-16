@@ -6,30 +6,18 @@
     const FORM = document.querySelector('[cr-filter-el="form"]');
     const RADIO_LABEL = '[cr-filter-el="radio-label"]';
     const RADIO_FIELD = '[cr-filter-el="radio-field"]';
+    const WORK_ITEMS = document.querySelectorAll('[cr-filter-el="work-item"]');
     const SEARCH_INPUT = document.querySelector('[cr-filter-el="search"]');
+    const HIDDEN_INPUT = document.querySelector("#hidden-input");
     const SUBMIT = document.querySelector('[cr-filter-el="submit"]');
     const ACTIVE_CLASS = "is-active";
-    window.fsAttributes = window.fsAttributes || [];
-    window.fsAttributes.push([
-      "cmsfilter",
-      (filterInstances) => {
-        const [filterInstance] = filterInstances;
-        filterInstance.listInstance.on("renderitems", (renderedItems) => {
-        });
-        FORM.addEventListener("click", function(e) {
-          const clickedEl = e.target.closest(RADIO_FIELD);
-          if (!clickedEl)
-            return;
-          const radioLabel = clickedEl.querySelector(RADIO_LABEL);
-          const labelText = radioLabel.textContent;
-          const radioFields = document.querySelectorAll(RADIO_FIELD);
-          radioFields.forEach((item) => {
-            item.classList.remove(ACTIVE_CLASS);
-          });
-          clickedEl.classList.add(ACTIVE_CLASS);
-          SEARCH_INPUT.value = labelText;
-        });
-      }
-    ]);
+    WORK_ITEMS.forEach((workItem) => {
+      const tagEl = workItem.querySelector('[cr-filter-el="tag"]');
+      const tagText = tagEl.textContent;
+      const tagArray = tagText.split(", ");
+      tagArray.forEach((tag) => {
+        tagEl.insertAdjacentHTML("afterend", `<div fs-cmsfilter-field="tag">${tag}</div>`);
+      });
+    });
   });
 })();
