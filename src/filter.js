@@ -1,20 +1,14 @@
 'use strict';
-
+//v1.2.0
 window.Webflow ||= [];
 window.Webflow.push(() => {
   // Webflow is initialized
   // Selectors for primary items
-  const FORM = document.querySelector('[cr-filter-el="form"]');
-  const RADIO_LABEL = '[cr-filter-el="radio-label"]';
-  const RADIO_FIELD = '[cr-filter-el="radio-field"]';
   const WORK_ITEMS = document.querySelectorAll('[cr-filter-el="work-item"]');
-  const SEARCH_INPUT = document.querySelector('[cr-filter-el="search"]');
-  const HIDDEN_INPUT = document.querySelector('#hidden-input');
-  const SUBMIT = document.querySelector('[cr-filter-el="submit"]');
-  const ACTIVE_CLASS = 'is-active';
+  const FILTER_BUTTON = document.querySelector('#filter-button');
+  const FILTER_WORK_BUTTON = document.querySelector('#filter-work');
 
-  ////////////////////////////////////////
-  // Adding Tags
+  // Get each work item and create individual tags from the tag text
   WORK_ITEMS.forEach((workItem) => {
     const tagEl = workItem.querySelector('[cr-filter-el="tag"]');
     const tagText = tagEl.textContent;
@@ -23,10 +17,15 @@ window.Webflow.push(() => {
       tagEl.insertAdjacentHTML('afterend', `<div fs-cmsfilter-field="tag">${tag}</div>`);
     });
   });
+  // When the Filter Work button is clicked open the filters
+  FILTER_WORK_BUTTON.addEventListener('click', function (e) {
+    FILTER_BUTTON.click();
+  });
+});
 
-  ////////////////////////////////////////
-  // Filter evenet listener
-  /*
+////////////////////////////////////////
+// Filter evenet listener
+/*
   FORM.addEventListener('click', function (e) {
     console.log('lcicked');
     const clickedEl = e.target.closest(RADIO_FIELD);
@@ -44,7 +43,6 @@ window.Webflow.push(() => {
     // console.log(filterInstance);
   });
   */
-});
 
 /*
 ////////////////////////////////////////
