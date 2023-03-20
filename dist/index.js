@@ -70,25 +70,52 @@
       if (!accordionLists)
         return;
       accordionLists.forEach((list) => {
+        const accordionItems = list.querySelectorAll(ACCORDION_ITEM);
         const firstItem = list.firstElementChild;
         firstItem.classList.add(ACTIVE_CLASS);
-        firstItem.querySelector(ACCORDION_OPEN).click();
-        list.addEventListener("click", function(e) {
-          const clickedEl = e.target.closest(ACCORDION_TOP);
-          if (!clickedEl)
-            return;
-          const activeItem = clickedEl.closest(ACCORDION_ITEM);
-          const accordionItems = list.querySelectorAll(ACCORDION_ITEM);
-          accordionItems.forEach((item) => {
-            item.classList.remove(ACTIVE_CLASS);
-          });
-          activeItem.classList.add(ACTIVE_CLASS);
-          accordionItems.forEach((item) => {
-            if (item.classList.contains(ACTIVE_CLASS)) {
-              item.querySelector(ACCORDION_OPEN).click();
-            } else {
-              item.querySelector(ACCORDION_CLOSE).click();
+        accordionItems.forEach((item) => {
+          const accordionBot = item.querySelector(ACCORDION_BOTTOM);
+          let accordionOpenTL = gsap.timeline({
+            paused: true,
+            defaults: {
+              ease: "power2.out",
+              duration: 0.6
             }
+          });
+          accordionOpenTL.to(accordionBot, {
+            height: "auto"
+          });
+          let accordionCloseTL = gsap.timeline({
+            paused: true,
+            defaults: {
+              ease: "power2.out",
+              duration: 0.6
+            }
+          });
+          accordionCloseTL.to(accordionBot, {
+            height: 0
+          });
+          accordionCloseTL.progress(1);
+          if (item.classList.contains(ACTIVE_CLASS)) {
+            accordionOpenTL.restart();
+          }
+          item.addEventListener("click", function(e) {
+            const clickedEl = e.target.closest(ACCORDION_TOP);
+            if (!clickedEl)
+              return;
+            const activeItem = item;
+            console.log("clicked item", activeItem);
+            accordionItems.forEach((item2) => {
+              item2.classList.remove(ACTIVE_CLASS);
+            });
+            activeItem.classList.add(ACTIVE_CLASS);
+            accordionItems.forEach((item2) => {
+              if (item2.classList.contains(ACTIVE_CLASS)) {
+                accordionOpenTL.restart();
+              } else {
+                accordionCloseTL.restart();
+              }
+            });
           });
         });
       });

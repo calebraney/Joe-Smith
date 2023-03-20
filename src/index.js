@@ -73,32 +73,61 @@ window.Webflow.push(() => {
     const ACTIVE_CLASS = 'is-active';
     if (!accordionLists) return;
     accordionLists.forEach((list) => {
-      //open the first accordion
+      // get all the accordions within this list
+      const accordionItems = list.querySelectorAll(ACCORDION_ITEM);
+      //set the first accordion as active
       const firstItem = list.firstElementChild;
       firstItem.classList.add(ACTIVE_CLASS);
-      firstItem.querySelector(ACCORDION_OPEN).click();
 
-      // Add event listener for when accordion lists are clicked
-      list.addEventListener('click', function (e) {
-        // check if the clicked element was the top of an accordion and get that accordion
-        const clickedEl = e.target.closest(ACCORDION_TOP);
-        if (!clickedEl) return;
-        const activeItem = clickedEl.closest(ACCORDION_ITEM);
-        // get all the accordions within this list
-        const accordionItems = list.querySelectorAll(ACCORDION_ITEM);
-        //remove the active class from all items
-        accordionItems.forEach((item) => {
-          item.classList.remove(ACTIVE_CLASS);
+      // Create a timeline for each item
+      accordionItems.forEach((item) => {
+        const accordionBot = item.querySelector(ACCORDION_BOTTOM);
+        let accordionOpenTL = gsap.timeline({
+          paused: true,
+          defaults: {
+            ease: 'power2.out',
+            duration: 0.6,
+          },
         });
-        // add the active class to the active item
-        activeItem.classList.add(ACTIVE_CLASS);
-        // check all items for the active class and animate
-        accordionItems.forEach((item) => {
-          if (item.classList.contains(ACTIVE_CLASS)) {
-            item.querySelector(ACCORDION_OPEN).click();
-          } else {
-            item.querySelector(ACCORDION_CLOSE).click();
-          }
+        accordionOpenTL.to(accordionBot, {
+          height: 'auto',
+        });
+        let accordionCloseTL = gsap.timeline({
+          paused: true,
+          defaults: {
+            ease: 'power2.out',
+            duration: 0.6,
+          },
+        });
+        accordionCloseTL.to(accordionBot, {
+          height: 0,
+        });
+        accordionCloseTL.progress(1);
+        // play the interaction for the active item
+        if (item.classList.contains(ACTIVE_CLASS)) {
+          accordionOpenTL.restart();
+        }
+        // Add event listener for when accordion lists are clicked
+        item.addEventListener('click', function (e) {
+          // check if the clicked element was the top of an accordion and get that accordion
+          const clickedEl = e.target.closest(ACCORDION_TOP);
+          if (!clickedEl) return;
+          const activeItem = item;
+          console.log('clicked item', activeItem);
+          //remove the active class from all items
+          accordionItems.forEach((item) => {
+            item.classList.remove(ACTIVE_CLASS);
+          });
+          // add the active class to the active item
+          activeItem.classList.add(ACTIVE_CLASS);
+          // check all items for the active class and animate
+          accordionItems.forEach((item) => {
+            if (item.classList.contains(ACTIVE_CLASS)) {
+              accordionOpenTL.restart();
+            } else {
+              accordionCloseTL.restart();
+            }
+          });
         });
       });
     });
