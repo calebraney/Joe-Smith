@@ -28,7 +28,6 @@
       primarySlides.forEach((item, index) => {
         let elHeight = item.offsetHeight;
         distance = distance - elHeight;
-        console.log(index, elHeight, distance);
         tl.to(slideList, {
           y: distance,
           onStart: () => {

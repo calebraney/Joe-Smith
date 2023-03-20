@@ -30,7 +30,7 @@ window.Webflow.push(() => {
       let elHeight = item.offsetHeight;
       distance = distance - elHeight;
       // let distance = (index + 1) * -elHeight;
-      console.log(index, elHeight, distance);
+      // console.log(index, elHeight, distance);
       tl.to(slideList, {
         y: distance,
         onStart: () => {
