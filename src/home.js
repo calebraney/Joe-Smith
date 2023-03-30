@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         yPercent: -100,
         opacity: 0,
       },
-      '-=.2'
+      '-=.6'
     );
   }
   pageLoad();

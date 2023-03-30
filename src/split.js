@@ -1,4 +1,6 @@
 'use strict';
+// register gsap plugin
+gsap.registerPlugin(ScrollTrigger);
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
