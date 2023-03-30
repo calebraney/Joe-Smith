@@ -1,11 +1,12 @@
 require('esbuild')
   .build({
     entryPoints: [
-      'src/index.js',
-      'src/filter.js',
       'src/accordion.js',
-      'src/split.js',
+      'src/home.js',
+      'src/cta-primary.js',
       'src/cta-split.js',
+      'src/filter.js',
+      'src/split.js',
     ],
     bundle: true,
     minify: true,

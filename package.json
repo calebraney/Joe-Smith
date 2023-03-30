@@ -12,8 +12,8 @@
   "main": "src/index.js",
   "scripts": {
     "serve": "serve",
-    "build": "esbuild src/index.js --bundle --outfile=dist/index.js --watch",
-    "build-file": "node builder.js"
+    "build-old": "esbuild src/index.js --bundle --outfile=dist/index.js --watch",
+    "build": "node builder.js"
   },
   "devDependencies": {
     "esbuild": "^0.15.18",
