@@ -1,4 +1,4 @@
-'use strict';
+import SplitType from 'split-type';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
