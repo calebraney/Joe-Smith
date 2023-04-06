@@ -62,7 +62,7 @@ window.Webflow.push(() => {
   };
   // add gsap match media
   let mm = gsap.matchMedia();
-  mm.add('(min-width: 992px)', () => {
+  mm.add('(min-width: 768px)', () => {
     // the code will only run if the media query matches
     splitAnimation();
   });
