@@ -1,4 +1,6 @@
 'use strict';
+// register gsap plugin
+gsap.registerPlugin(ScrollTrigger);
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
@@ -16,7 +18,6 @@ window.Webflow.push(() => {
 
     const ACTIVE_CLASS = 'is-active';
     if (!splitSticky || !splitComponent) return;
-    console.log('split run');
     // store amount of cms items
     const itemCount = splitLeftItems.length + 1;
     const scrollHeight = itemCount * 100;

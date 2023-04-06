@@ -1,4 +1,6 @@
 'use strict';
+// register gsap plugin
+gsap.registerPlugin(Flip);
 
 window.Webflow ||= [];
 window.Webflow.push(() => {

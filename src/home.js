@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // On Page Load
   function pageLoad() {
     const component = document.querySelector('.home-header_component');
-    const otherText = document.querySelectorAll('.home-header_component p, .button');
+    const otherText = component.querySelectorAll('p, .button');
     const lottieTrigger = document.querySelector('.home-header_lottie-trigger');
     let tl = gsap.timeline({
       delay: 0.4,
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         yPercent: -100,
         opacity: 0,
       },
-      '-=.2'
+      '-=.6'
     );
   }
   pageLoad();
