@@ -1,4 +1,4 @@
-'use strict';
+import SplitType from 'split-type';
 
 document.addEventListener('DOMContentLoaded', function () {
   // Webflow is initialized
