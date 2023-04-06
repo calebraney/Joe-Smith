@@ -1,5 +1,3 @@
-import SplitType from 'split-type';
-
 window.Webflow ||= [];
 window.Webflow.push(() => {
   // Animation for What We Do Dropdowns

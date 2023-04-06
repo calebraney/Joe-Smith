@@ -1,5 +1,3 @@
-'use strict';
-
 // const { doc } = require('prettier');
 
 window.Webflow ||= [];

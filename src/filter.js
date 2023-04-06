@@ -1,5 +1,3 @@
-'use strict';
-//v1.2.1
 window.Webflow ||= [];
 window.Webflow.push(() => {
   // Webflow is initialized
