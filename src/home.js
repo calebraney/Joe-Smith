@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
     tl.set(component, {
       opacity: 1,
     });
+    tl.set('.navbar_component', {
+      opacity: 1,
+    });
     tl.add(function () {
       console.log(lottieTrigger);
       lottieTrigger.click();
