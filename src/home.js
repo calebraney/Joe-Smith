@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     tl.set(component, {
       opacity: 1,
     });
-    tl.set('.navbar_component', {
-      opacity: 1,
-    });
     tl.add(function () {
       console.log(lottieTrigger);
       lottieTrigger.click();
@@ -48,11 +45,15 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       '-=.8'
     );
-    tl.from(
+    tl.fromTo(
       '.navbar_component',
       {
         yPercent: -100,
         opacity: 0,
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
       },
       '-=.6'
     );
