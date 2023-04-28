@@ -16,7 +16,7 @@ window.Webflow.push(() => {
       tagEl.insertAdjacentHTML('afterend', `<div fs-cmsfilter-field="tag">${tag}</div>`);
     });
   });
-  // When the Filter Work button is clicked open the filters
+  // Update the filters open tracker to prevent the work button from accidentally closing the filters
   FILTER_BUTTON.addEventListener('click', function (e) {
     if (!filtersOpen) {
       filtersOpen = true;
