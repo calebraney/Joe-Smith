@@ -2,9 +2,11 @@ window.Webflow ||= [];
 window.Webflow.push(() => {
   // Webflow is initialized
   // Selectors for primary items
+  console.log('custom');
   const WORK_ITEMS = document.querySelectorAll('[cr-filter-el="work-item"]');
   const FILTER_BUTTON = document.querySelector('#filter-button');
   const FILTER_WORK_BUTTON = document.querySelector('#filter-work');
+  let filtersOpen = false;
 
   // Get each work item and create individual tags from the tag text
   WORK_ITEMS.forEach((workItem) => {
@@ -16,8 +18,19 @@ window.Webflow.push(() => {
     });
   });
   // When the Filter Work button is clicked open the filters
+  FILTER_BUTTON.addEventListener('click', function (e) {
+    if (!filtersOpen) {
+      filtersOpen = true;
+    } else {
+      filtersOpen = false;
+    }
+  });
+
+  // When the Filter Work button is clicked open the filters
   FILTER_WORK_BUTTON.addEventListener('click', function (e) {
-    FILTER_BUTTON.click();
+    if (!filtersOpen) {
+      FILTER_BUTTON.click();
+    }
   });
 });
 
