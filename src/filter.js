@@ -2,7 +2,6 @@ window.Webflow ||= [];
 window.Webflow.push(() => {
   // Webflow is initialized
   // Selectors for primary items
-  console.log('custom');
   const WORK_ITEMS = document.querySelectorAll('[cr-filter-el="work-item"]');
   const FILTER_BUTTON = document.querySelector('#filter-button');
   const FILTER_WORK_BUTTON = document.querySelector('#filter-work');
