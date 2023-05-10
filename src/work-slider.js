@@ -1,21 +1,5 @@
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  // instance of CMS attributes
-  window.fsAttributes = window.fsAttributes || [];
-  window.fsAttributes.push([
-    'cmsload',
-    (listInstances) => {
-      // The callback passes a `listInstances` array with all the `CMSList` instances on the page.
-      const [listInstance] = listInstances;
-
-      // The `renderitems` event runs whenever the list renders items after switching pages.
-      listInstance.on('renderitems', (renderedItems) => {
-        // create splide slider
-        ourWorkSlider();
-      });
-    },
-  ]);
-
   // Splide Slider
   function ourWorkSlider() {
     let splides = document.querySelectorAll('.splide.is-our-work');
@@ -54,4 +38,5 @@ window.Webflow.push(() => {
       }).mount();
     }
   }
+  ourWorkSlider();
 });
