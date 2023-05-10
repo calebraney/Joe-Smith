@@ -9,6 +9,7 @@ await esbuild
       'src/cta-split.js',
       'src/filter.js',
       'src/split.js',
+      'src/work-slider.js',
     ],
     bundle: true,
     minify: true,
