@@ -18,7 +18,6 @@ window.Webflow.push(() => {
 
   // Splide Slider
   function ourWorkSlider() {
-    console.log('slider created');
     let splides = document.querySelectorAll('.splide.is-our-work');
     for (let i = 0, splideLength = splides.length; i < splideLength; i++) {
       new Splide(splides[i], {
